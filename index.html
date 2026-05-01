@@ -1,32 +1,73 @@
-index.html
 <html>
+
 <head>
     <title>Student Registration</title>
+    <style>
+        .Form-body {
+            color: beige;
+            padding: 30px;
+            margin: 50px;
+            border-radius: 10px;
+            box-shadow: 2px 2px grey;
+            text-align: center;
+            justify-content: center;
+        }
+    </style>
+    <script>
+        function submitform() {
+            let name = document.getElementsById("name").value;
+            alert("hello " + name + " Form Submitted Successfully!")
+        } function validateForm() {let isvalid = true;
+            return isvalid;
+        }
+
+    </script>
 </head>
-<body style="background-color:aquamarine; display: flex; flex-direction: column; align-items: center;">
 
-    <h1>Student Registration Form</h1>
+<body
+    style="background-color:aquamarine; display: flex; flex-direction: column; align-items: center; padding: 20px; width:300px;">
 
-<form>
 
-<label>Name:</label><br>
-<input type="text" name="name"><br><br>
 
-<label>City:</label><br>
-<input type="text" name="city"><br><br>
+    <div class="Form-body">
+        <h1 style="font-family: Arial, Helvetica, sans-serif; text-align: center; justify-content: center;">Student
+            Registration Form</h1>
+        <form onsubmit="return validateForm()"></form> action="#" method="post" onsubmit="submitform()">
 
-<label>Gender:</label><br>
-<input type="radio" name="gender">Male
-<input type="radio" name="gender">Female
-<input type="radio" name="gender">other<br><br>
+            <label>Name:</label><br>
+            <input type="text" id="name" name="maria"><br><br>
 
-<label>Hobbies:</label><br>
-<input type="checkbox"> Reading
-<input type="checkbox"> Sports
-<input type="checkbox"> Music<br><br>
+            if (email: abc@gmail.com) {
+                 isvalid = false;
+            }
+            if (password.length < 012345) {
+                 isvalid =false;
+                }
 
-<input type="submit" value="Submit"></form>
+            <label>City:</label><br>
+            <input type="text" name="islamabad"><br><br>
+
+            <label>Gender:</label><br>
+            <input type="radio" name="gender">Male
+            <input type="radio" name="gender">Female
+            <input type="radio" name="gender">other<br><br>
+
+            <label>Hobbies:</label><br>
+            <input type="checkbox"> Reading
+            <input type="checkbox"> Sports
+            <input type="checkbox"> Music<br><br>
+            alert("Please fill all fields correctly");
+
+            if (isvalid) {
+                alert("Form Submitted Successfully!");
+            }
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
 
 </body>
-</html>
 
+</html>
