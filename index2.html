@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form onsubmit="return validateForm()">
+
+    <!-- Name -->
+    Name: <input type="text" id="name">
+    <div class="error" id="nameError"></div><br>
+
+    <!-- Email -->
+    Email: <input type="text" id="email">
+    <div class="error" id="emailError"></div><br>
+
+    <!-- Password -->
+    Password: <input type="password" id="password">
+    <div class="error" id="passwordError"></div><br>
+
+    <!-- City -->
+    City:
+    <select id="city">
+        <option value="">Select City</option>
+        <option>Islamabad</option>
+        <option>Lahore</option>
+        <option>Karachi</option>
+    </select>
+    <div class="error" id="cityError"></div><br>
+
+    <!-- Gender -->
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other
+    <div class="error" id="genderError"></div><br>
+
+    <!-- Hobbies -->
+    Hobbies:
+    <input type="checkbox" name="hobby" value="Reading"> Reading
+    <input type="checkbox" name="hobby" value="Sports"> Sports
+    <input type="checkbox" name="hobby" value="Music"> Music
+    <div class="error" id="hobbyError"></div><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+function validateForm() {
+
+    let isValid = true;
+
+    // Get values
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let city = document.getElementById("city").value;
+    let gender = document.querySelector('input[name="gender"]:checked');
+    let hobbies = document.querySelectorAll('input[name="hobby"]:checked');
+
+    // Clear previous errors
+    document.getElementById("nameError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("passwordError").innerHTML = "";
+    document.getElementById("cityError").innerHTML = "";
+    document.getElementById("genderError").innerHTML = "";
+    document.getElementById("hobbyError").innerHTML = "";
+
+    // Name validation
+    if (name === "") {
+        document.getElementById("nameError").innerHTML = "Name is required";
+        isValid = false;
+    }
+
+    // Email validation
+    if (email === "") {
+        document.getElementById("emailError").innerHTML = "Email is required";
+        isValid = false;
+    } else if (!email.includes("@")) {
+        document.getElementById("emailError").innerHTML = "Email must contain @";
+        isValid = false;
+    }
+
+    // Password validation
+    if (password === "") {
+        document.getElementById("passwordError").innerHTML = "Password is required";
+        isValid = false;
+    } else if (password.length < 6) {
+        document.getElementById("passwordError").innerHTML = "Password must be at least 6 characters";
+        isValid = false;
+    }
+
+    // City validation
+    if (city === "") {
+        document.getElementById("cityError").innerHTML = "Please select a city";
+        isValid = false;
+    }
+
+    // Gender validation
+    if (!gender) {
+        document.getElementById("genderError").innerHTML = "Please select gender";
+        isValid = false;
+    }
+
+    // Hobbies validation
+    if (hobbies.length === 0) {
+        document.getElementById("hobbyError").innerHTML = "Select at least one hobby";
+        isValid = false;
+    }
+
+    // Final result
+    if (isValid) {
+        alert("Form submitted successfully!");
+    }
+
+    return isValid;
+}
+
+</script>
+
+</body>
+</html>
