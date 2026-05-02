@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <title>Student Registration</title>
+    <style>
+        .Form-body {
+            color: beige;
+            padding: 30px;
+            margin: 50px;
+            border-radius: 10px;
+            box-shadow: 2px 2px grey;
+            text-align: center;
+            justify-content: center;
+        }
+    </style>
+    <script>
+        function submitform() {
+            let name = document.getElementsById("name").value;
+            alert("hello " + name + " Form Submitted Successfully!")
+        } function validateForm() {let isvalid = true;
+            return isvalid;
+        }
+
+    </script>
+</head>
+
+<body
+    style="background-color:aquamarine; display: flex; flex-direction: column; align-items: center; padding: 20px; width:300px;">
+
+
+
+    <div class="Form-body">
+        <h1 style="font-family: Arial, Helvetica, sans-serif; text-align: center; justify-content: center;">Student
+            Registration Form</h1>
+        <form onsubmit="return validateForm()"></form> 
+
+            <label>Name:</label><br>
+            <input type="text" id="name" name="maria"><br><br>
+
+            
+
+            <label>City:</label><br>
+            <input type="text" name="islamabad"><br><br>
+
+            <label>Gender:</label><br>
+            <input type="radio" name="gender">Male
+            <input type="radio" name="gender">Female
+            <input type="radio" name="gender">other<br><br>
+
+            <label>Hobbies:</label><br>
+            <input type="checkbox"> Reading
+            <input type="checkbox"> Sports
+            <input type="checkbox"> Music<br><br>
+            
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (name === "") {
+        alert("Name is required");
+        return false;
+    }
+
+    if (email === "") {
+        alert("Email is required");
+        return false;
+    }
+
+    if (!email.includes("@")) {
+        alert("Enter a valid email");
+        return false;
+    }
+
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters");
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+    </script>
+    
+</body>
+
+</html>
+

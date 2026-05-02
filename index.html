@@ -1,95 +1,139 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>Student Registration</title>
+    <title>Student Registration Form</title>
+
     <style>
-        .Form-body {
-            color: beige;
-            padding: 30px;
-            margin: 50px;
-            border-radius: 10px;
-            box-shadow: 2px 2px grey;
-            text-align: center;
-            justify-content: center;
+        body {
+            font-family: Arial;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
         }
     </style>
     <script>
-        function submitform() {
-            let name = document.getElementsById("name").value;
-            alert("hello " + name + " Form Submitted Successfully!")
-        } function validateForm() {let isvalid = true;
-            return isvalid;
-        }
 
-    </script>
-</head>
+function validateForm() {
 
-<body
-    style="background-color:aquamarine; display: flex; flex-direction: column; align-items: center; padding: 20px; width:300px;">
+    let isValid = true;
 
-
-
-    <div class="Form-body">
-        <h1 style="font-family: Arial, Helvetica, sans-serif; text-align: center; justify-content: center;">Student
-            Registration Form</h1>
-        <form onsubmit="return validateForm()"></form> 
-
-            <label>Name:</label><br>
-            <input type="text" id="name" name="maria"><br><br>
-
-            
-
-            <label>City:</label><br>
-            <input type="text" name="islamabad"><br><br>
-
-            <label>Gender:</label><br>
-            <input type="radio" name="gender">Male
-            <input type="radio" name="gender">Female
-            <input type="radio" name="gender">other<br><br>
-
-            <label>Hobbies:</label><br>
-            <input type="checkbox"> Reading
-            <input type="checkbox"> Sports
-            <input type="checkbox"> Music<br><br>
-            
-
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-    <script>
-        function validateForm() {
-
+    // Get values
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
+    let city = document.getElementById("city").value;
+    let gender = document.querySelector('input[name="gender"]:checked');
+    let hobbies = document.querySelectorAll('input[name="hobby"]:checked');
 
+    // Clear previous errors
+    document.getElementById("nameError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("passwordError").innerHTML = "";
+    document.getElementById("cityError").innerHTML = "";
+    document.getElementById("genderError").innerHTML = "";
+    document.getElementById("hobbyError").innerHTML = "";
+
+    // Name validation
     if (name === "") {
-        alert("Name is required");
-        return false;
+        document.getElementById("nameError").innerHTML = "Name is required";
+        isValid = false;
     }
 
+    // Email validation
     if (email === "") {
-        alert("Email is required");
-        return false;
+        document.getElementById("emailError").innerHTML = "Email is required";
+        isValid = false;
+    } else if (!email.includes("@")) {
+        document.getElementById("emailError").innerHTML = "Email must contain @";
+        isValid = false;
     }
 
-    if (!email.includes("@")) {
-        alert("Enter a valid email");
-        return false;
+    // Password validation
+    if (password === "") {
+        document.getElementById("passwordError").innerHTML = "Password is required";
+        isValid = false;
+    } else if (password.length < 6) {
+        document.getElementById("passwordError").innerHTML = "Password must be at least 6 characters";
+        isValid = false;
     }
 
-    if (password.length < 6) {
-        alert("Password must be at least 6 characters");
-        return false;
+    // City validation
+    if (city === "") {
+        document.getElementById("cityError").innerHTML = "Please select a city";
+        isValid = false;
     }
 
-    alert("Form submitted successfully!");
-    return true;
+    // Gender validation
+    if (!gender) {
+        document.getElementById("genderError").innerHTML = "Please select gender";
+        isValid = false;
+    }
+
+    // Hobbies validation
+    if (hobbies.length === 0) {
+        document.getElementById("hobbyError").innerHTML = "Select at least one hobby";
+        isValid = false;
+    }
+
+    // Final result
+    if (isValid) {
+        alert("Form submitted successfully!");
+    }
+
+    return isValid;
 }
-    </script>
-    
+
+</script>
+
+
+</head>
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form onsubmit="return validateForm()">
+
+    <!-- Name -->
+    Name: <input type="text" id="name">
+    <div class="error" id="nameError"></div><br>
+
+    <!-- Email -->
+    Email: <input type="text" id="email">
+    <div class="error" id="emailError"></div><br>
+
+    <!-- Password -->
+    Password: <input type="password" id="password">
+    <div class="error" id="passwordError"></div><br>
+
+    <!-- City -->
+    City:
+    <select id="city">
+        <option value="">Select City</option>
+        <option>Islamabad</option>
+        <option>Lahore</option>
+        <option>Karachi</option>
+    </select>
+    <div class="error" id="cityError"></div><br>
+
+    <!-- Gender -->
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other
+    <div class="error" id="genderError"></div><br>
+
+    <!-- Hobbies -->
+    Hobbies:
+    <input type="checkbox" name="hobby" value="Reading"> Reading
+    <input type="checkbox" name="hobby" value="Sports"> Sports
+    <input type="checkbox" name="hobby" value="Music"> Music
+    <div class="error" id="hobbyError"></div><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+
 </body>
-
 </html>
-
