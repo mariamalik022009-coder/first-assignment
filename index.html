@@ -37,12 +37,7 @@
             <label>Name:</label><br>
             <input type="text" id="name" name="maria"><br><br>
 
-            if (email: abc@gmail.com) {
-                 isvalid = false;
-            }
-            if (password.length < 012345) {
-                 isvalid =false;
-                }
+            
 
             <label>City:</label><br>
             <input type="text" name="islamabad"><br><br>
@@ -56,18 +51,45 @@
             <input type="checkbox"> Reading
             <input type="checkbox"> Sports
             <input type="checkbox"> Music<br><br>
-            alert("Please fill all fields correctly");
-
-            if (isvalid) {
-                alert("Form Submitted Successfully!");
-            }
+            
 
             <button type="submit">Submit</button>
         </form>
     </div>
+    
+    <script>
+        function validateForm() {
 
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
 
+    if (name === "") {
+        alert("Name is required");
+        return false;
+    }
 
+    if (email === "") {
+        alert("Email is required");
+        return false;
+    }
+
+    if (!email.includes("@")) {
+        alert("Enter a valid email");
+        return false;
+    }
+
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters");
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+    </script>
+    
 </body>
 
 </html>
+
